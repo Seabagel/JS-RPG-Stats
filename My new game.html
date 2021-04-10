@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Level.js</title>
+</head>
+<body onload="calcXp(); calcEhp()">
+
+<h2>Player's Level:</h2>
+<input type="range" min="1" max="50" id="x" onchange="calcXp()" value="1"> <br>
+Level: <h3 id="level"></h3>
+XP to level up: <h3 id="y"></h3>
+
+<script type="text/javascript">
+	var a = 0.04;
+	var b = 0.6;
+	var c = 13.2;
+
+	var calcXp = function () {
+		var x = document.getElementById("x").value;
+		var y = (a * x * x) + (b * x) + c + (x * 1);
+		document.getElementById("y").innerHTML = (a * x * x).toFixed(2) + " + " +
+												 (b * x).toFixed(2) + " + " +
+												c + " + " +
+												x + " = " + 
+												Math.round(y);
+		document.getElementById("level").innerHTML = x;
+	}
+</script>
+
+<hr>
+
+<h2>Enemy's Health:</h2>
+Player's Level : <input type="range" min="1" max="50" id="plv" onchange="calcEhp()" value="1"> <br>
+<h3 id="plvVar"></h3>
+Enemy's Level : <input type="range" min="1" max="10" id="ehp" onchange="calcEhp()" value="1"> <br>
+<h3 id="ehpVar"></h3>
+Current Enemy HP : <br>
+<h3 id="curEhp"></h3>
+
+<script type="text/javascript">
+	var calcEhp = function () {
+		var plv = document.getElementById("plv").value;
+		var ehp = document.getElementById("ehp").value;
+		document.getElementById("plvVar").innerHTML = plv;
+		document.getElementById("ehpVar").innerHTML = ehp;
+		document.getElementById("curEhp").innerHTML = Math.round(((plv * ehp)*0.75));
+	}
+</script>
+
+<hr>
+
+<h2>Gun Accuracy</h2>
+All Values are measured in Degrees per Second <br><br>
+Recoil Rate : <h3 id="recoil"></h3>
+Recovery Rate : <h3 id="recover"></h3>
+Current Value : <h3 id="curRecoil"></h3>
+<button id="shoot" onmousedown="recoilLoop();">Shoot</button>
+
+<script type="text/javascript">
+	var recoil = document.getElementById("recoil");
+	var recover = document.getElementById("recover");
+	var curRecoil = document.getElementById("curRecoil");
+	var framerate = 20; //Miliseconds; about 60fps
+	var recoilLoop = function(){
+		curRecoil.innerHTML -= 1;
+	};
+	setInterval(recoilLoop(), framerate);
+</script>
+
+</body>
+</html>

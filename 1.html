@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Javascript Practice 1</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+	function HelloTim(){
+		var myname = "Tim";
+		alert("Hello, " + myname + "!");
+	}
+
+	function HelloEveryone(name){
+		alert("Hello " + name);
+	}
+
+	function HelloYou(){
+		myname = prompt("What's yer name bub?");
+		alert("Hello " + myname);
+	}
+</script>
+	
+<a href="javascript:HelloTim()">Hello</a><br>
+<a href="javascript:HelloEveryone('Tom')">Hello Tom</a><br>
+<a href="javascript:HelloEveryone('Frank')">Hello Frank</a><br>
+<a href="javascript:HelloEveryone('Bob, Carol, Ted & Alice')">Hello to a few other people.</a><br>
+<a href="javascript:HelloYou()">Hello to You.</a><br>
+
+</body>
+</html>
